@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-api
+  labels:
+    app: simple-api
+spec:
+  containers:
+  - name: simple-api
+    image: gustavoleitao/simple-api:1.0.0
+    ports:
+    - containerPort: 3000
