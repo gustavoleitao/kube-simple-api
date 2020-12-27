@@ -8,5 +8,6 @@ Para aplicar as configurações em um cluster Kubernetes, execute:
 $ kubectl apply -f simple-pod.yml
 $ kubectl apply -f simple-deployment.yml
 $ kubectl apply -f simple-service.yml
+$ kubectl apply -f simple-ingress.yml
 ```
 
