@@ -5,7 +5,7 @@ metadata:
   labels:
     app: simple-api
 spec:
-  replicas: 5
+  replicas: 10
   selector:
     matchLabels:
       app: simple-api
@@ -16,13 +16,18 @@ spec:
     spec:
       containers:
       - name: simple-api
-        image: gustavoleitao/simple-api:1.0.0
+        image: gustavoleitao/simple-api:1.0.3
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         readinessProbe:
           httpGet:
             path: /
             port: 3000
-
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 15
 
 
