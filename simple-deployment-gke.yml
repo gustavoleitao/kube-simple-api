@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tst-api-java
+  labels:
+    app: tst-api-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tst-api-java
+  template:
+    metadata:
+      labels:
+        app: tst-api-java
+    spec:
+      containers:
+      - name: tst-api-java
+        image: registry.gitlab.com/ufrn-imd/residencia-tst/tst-api-java
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /hello
+            port: 8080
+        livenessProbe:
+          httpGet:
+            path: /hello
+            port: 8080
+          failureThreshold: 3
+          periodSeconds: 10
+        startupProbe:
+          httpGet:
+            path: /hello
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10

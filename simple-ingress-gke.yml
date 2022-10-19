@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-api-ing-v3
+  # annotations:
+    # kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
+spec:
+  defaultBackend: # obrigatório no GKE
+    service:
+      name: tst-api-java
+      port:
+        number: 8080
+  rules:
+  - host: tstdevops.ufrn.br
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: tst-api-java
+              port: 
+                number: 8080

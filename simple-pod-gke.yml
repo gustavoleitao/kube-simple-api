@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tst-api-java
+  labels:
+    app: tst-api-java
+spec:
+  containers:
+  - name: tst-api-java
+    image: registry.gitlab.com/ufrn-imd/residencia-tst/tst-api-java
+    ports:
+    - containerPort: 8080
